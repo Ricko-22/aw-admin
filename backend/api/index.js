@@ -20,6 +20,7 @@ app.use(cors({
     "https://awadmin.netlify.app",
     "https://awadmin1.netlify.app",
     "https://awlaunndry.netlify.app",
+    "https://awlaundry1.netlify.app",
   ],
   credentials: true,
 }));
