@@ -18,6 +18,7 @@ app.use(cors({
   origin: [
     "http://localhost:5173",
     "https://awadmin.netlify.app",
+    "https://awadmin1.netlify.app",
     "https://awlaunndry.netlify.app",
   ],
   credentials: true,
