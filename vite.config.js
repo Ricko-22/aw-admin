@@ -8,7 +8,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'AW Laundry',
+        name: 'AW Laundry-Admin',
         short_name: 'AW Laundry-Admin',
         description: 'Layanan laundry profesional di Purwokerto',
         theme_color: '#6366f1',
