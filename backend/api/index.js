@@ -34,7 +34,9 @@ if (!process.env.ADMIN_USERNAME || !process.env.ADMIN_PASSWORD) {
 
 const pool = new Pool({ 
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+  ssl: process.env.NODE_ENV === "production" 
+    ? { rejectUnauthorized: false } 
+    : false
 });
 pool.on("error", (err) => console.error("❌ PostgreSQL Error:", err));
 

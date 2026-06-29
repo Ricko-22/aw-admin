@@ -34,7 +34,9 @@ if (!process.env.ADMIN_USERNAME || !process.env.ADMIN_PASSWORD) {
 
 const pool = new Pool({ 
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+  ssl: process.env.NODE_ENV === "production" 
+    ? { rejectUnauthorized: false } 
+    : false
 });
 pool.on("error", (err) => console.error("❌ PostgreSQL Error:", err));
 
@@ -225,4 +227,20 @@ app.delete("/pesanan/:nota", verifyToken, async (req, res) => {
 });
 
 /* ========================= SERVER ========================= */
+/* ========================= SERVER ========================= */
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`\n🚀 Server jalan di http://localhost:${PORT}\n`);
+  console.log("POST   /login");
+  console.log("POST   /pesanan");
+  console.log("GET    /pesanan              (JWT)");
+  console.log("GET    /tracking/hp/:hp");
+  console.log("GET    /tracking/id/:id");
+  console.log("GET    /tracking/nota/:kode");
+  console.log("PUT    /pesanan/:nota        (JWT)");
+  console.log("DELETE /pesanan/:nota        (JWT)");
+});
+
 export default app;
+
