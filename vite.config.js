@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       manifest: {
         name: 'AW Laundry',
-        short_name: 'AW Laundry',
+        short_name: 'AW Laundry-Admin',
         description: 'Layanan laundry profesional di Purwokerto',
         theme_color: '#6366f1',
         background_color: '#ffffff',
