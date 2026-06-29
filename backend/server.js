@@ -32,7 +32,10 @@ if (!process.env.ADMIN_USERNAME || !process.env.ADMIN_PASSWORD) {
   process.exit(1);
 }
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new Pool({ 
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
 pool.on("error", (err) => console.error("❌ PostgreSQL Error:", err));
 
 app.get("/", (req, res) => res.json({ success: true, message: "AW Laundry API berjalan" }));
