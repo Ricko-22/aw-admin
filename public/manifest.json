@@ -1,6 +1,6 @@
 {
-  "name": "AW Laundry-Admin",
-  "short_name": "AW Laundry-Admin",
+  "name": "AW Admin",
+  "short_name": "AW Admin",
   "description": "Layanan laundry profesional di Purwokerto",
   "start_url": "/",
   "display": "standalone",
