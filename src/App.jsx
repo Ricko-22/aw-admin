@@ -351,10 +351,39 @@ function Dashboard({ token, onLogout }) {
 
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("aw_token"));
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstall, setShowInstall] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstall(true);
+    });
+    window.addEventListener('appinstalled', () => setShowInstall(false));
+  }, []);
+
+  const handleInstall = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') setShowInstall(false);
+    setDeferredPrompt(null);
+  };
+
   const handleLogin = (t) => setToken(t);
   const handleLogout = () => { localStorage.removeItem("aw_token"); setToken(null); };
-  if (!token) return <Login onLogin={handleLogin} />;
-  return <Dashboard token={token} onLogout={handleLogout} />;
+
+  return (
+    <>
+      {showInstall && (
+        <button onClick={handleInstall} className="install-float">
+          📲
+        </button>
+      )}
+      {!token ? <Login onLogin={handleLogin} /> : <Dashboard token={token} onLogout={handleLogout} />}
+    </>
+  );
 }
 
 export default App;

@@ -202,3 +202,27 @@ select { padding: 9px 12px; border-radius: 10px; border: 1.5px solid #e5e7eb; fo
   /* Login mobile */
   .login-card { padding: 32px 22px; border-radius: 18px; }
 }
+
+.install-float {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #6366f1;
+  color: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.install-float:hover {
+  transform: scale(1.15);
+}
